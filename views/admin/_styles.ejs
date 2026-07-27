@@ -1,0 +1,63 @@
+<style>
+  :root{
+    --bg: #18130F; --surface:#221B15; --surface-2:#2C2318;
+    --line: rgba(243,225,200,.14); --ink:#F2E9DC; --ink-soft:#B4A493; --ink-faint:#6B5D4E;
+    --accent:#B9536E; --accent-ink:#FBFAF4; --ok:#8FBF6E; --danger:#C9536E;
+    --display:"Instrument Serif", serif; --mono:"IBM Plex Mono", monospace;
+    --radius:2px;
+  }
+  *{box-sizing:border-box;}
+  body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--mono);font-size:14px;}
+  a{color:inherit;}
+  .wrap{max-width:1080px;margin:0 auto;padding:40px 24px 120px;}
+  header{margin-bottom:32px;display:flex;align-items:baseline;justify-content:space-between;gap:16px;flex-wrap:wrap;}
+  .eyebrow{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-faint);display:block;margin-bottom:8px;}
+  h1{font-family:var(--display);font-style:italic;font-weight:400;font-size:clamp(28px,4vw,40px);margin:0 0 6px;}
+  .sub{color:var(--ink-soft);font-size:13px;max-width:60ch;line-height:1.6;}
+
+  .message{font-size:12.5px;color:var(--ok);background:rgba(143,191,110,.1);border:1px solid rgba(143,191,110,.3);padding:10px 14px;border-radius:var(--radius);margin-bottom:24px;}
+  .error{font-size:12.5px;color:var(--danger);background:rgba(201,83,110,.1);border:1px solid rgba(201,83,110,.3);padding:10px 14px;border-radius:var(--radius);margin-bottom:20px;}
+
+  .toolbar{display:flex;gap:10px;flex-wrap:wrap;margin:0 0 28px;}
+  button, .btn, .file-btn{
+    font-family:var(--mono);font-size:12.5px;letter-spacing:.02em;
+    background:var(--surface-2);color:var(--ink);border:1px solid var(--line);
+    border-radius:var(--radius);padding:9px 14px;cursor:pointer;transition:.15s;
+    display:inline-flex;align-items:center;gap:6px;text-decoration:none;
+  }
+  button:hover, .btn:hover, .file-btn:hover{border-color:var(--accent);color:var(--accent-ink);}
+  button.primary, .btn.primary{background:var(--accent);color:var(--accent-ink);border-color:var(--accent);}
+  button.danger{color:var(--danger);}
+  input[type=file]{display:none;}
+
+  .list{display:flex;flex-direction:column;gap:10px;margin-bottom:40px;}
+  .card{display:flex;align-items:center;gap:14px;background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:12px 14px;}
+  .card .swatch{width:44px;height:44px;border-radius:var(--radius);flex:0 0 auto;background-size:cover;background-position:center;}
+  .card .meta{flex:1;min-width:0;}
+  .card .title{font-family:var(--display);font-style:italic;font-size:18px;}
+  .card .cat{color:var(--ink-faint);font-size:11.5px;}
+  .card .actions{display:flex;gap:6px;flex:0 0 auto;flex-wrap:wrap;}
+  .card.hidden-item{opacity:.45;}
+  .empty{color:var(--ink-faint);font-size:13px;padding:24px;text-align:center;border:1px dashed var(--line);border-radius:var(--radius);}
+
+  form.editor{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:24px;}
+  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+  .field{margin-bottom:16px;}
+  .field label{display:block;font-size:11px;text-transform:uppercase;letter-spacing:.06em;color:var(--ink-faint);margin-bottom:6px;}
+  .field .hint{font-size:11px;color:var(--ink-faint);margin-top:4px;line-height:1.5;}
+  input[type=text], input[type=url], input[type=password], textarea{
+    width:100%;background:var(--surface-2);border:1px solid var(--line);color:var(--ink);
+    font-family:var(--mono);font-size:13px;padding:9px 10px;border-radius:var(--radius);
+  }
+  input[type=color]{width:44px;height:34px;padding:0;border:1px solid var(--line);border-radius:var(--radius);background:none;}
+  textarea{resize:vertical;min-height:70px;line-height:1.5;}
+  .color-row{display:flex;align-items:center;gap:8px;}
+  .thumb-row{display:flex;gap:10px;flex-wrap:wrap;margin-top:10px;}
+  .thumb{position:relative;width:74px;height:74px;border-radius:var(--radius);overflow:hidden;border:1px solid var(--line);}
+  .thumb img{width:100%;height:100%;object-fit:cover;display:block;}
+  .form-actions{display:flex;gap:10px;margin-top:20px;padding-top:20px;border-top:1px solid var(--line);}
+  .checkbox-row{display:flex;align-items:center;gap:8px;}
+  .checkbox-row input{width:auto;}
+
+  .login-card{max-width:360px;margin:120px auto 0;background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:28px;}
+</style>

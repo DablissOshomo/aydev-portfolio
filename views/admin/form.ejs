@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title><%= project ? 'Edit' : 'New' %> project — Work CMS</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=IBM+Plex+Mono:wght@300;400;500;600&display=swap" rel="stylesheet">
+<%- include('_styles') %>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div>
+      <span class="eyebrow">Ay/DEV — internal tool</span>
+      <h1><%= project ? 'Edit project' : 'New project' %></h1>
+      <p class="sub">Saving publishes immediately — this project's page is live at
+        <code>/work/&lt;slug&gt;</code> the moment you hit Save.</p>
+    </div>
+    <a href="/admin" class="btn">← Back to list</a>
+  </header>
+
+  <% if (error) { %><div class="error"><%= error %></div><% } %>
+
+  <form class="editor" method="POST" action="/admin/save" enctype="multipart/form-data">
+    <input type="hidden" name="originalSlug" value="<%= project ? project.slug : '' %>">
+    <input type="hidden" name="existingCoverImage" value="<%= project && project.coverImage ? project.coverImage : '' %>" id="existingCoverImage">
+
+    <div class="grid2">
+      <div class="field">
+        <label>Title</label>
+        <input type="text" name="title" id="f_title" value="<%= project ? project.title : '' %>" placeholder="IKI Ramen+Sushi" required>
+      </div>
+      <div class="field">
+        <label>Slug (used in the project page URL — /work/&lt;slug&gt;)</label>
+        <input type="text" name="slug" id="f_slug" value="<%= project ? project.slug : '' %>" placeholder="iki-ramen-sushi">
+      </div>
+    </div>
+
+    <div class="grid2">
+      <div class="field">
+        <label>Category (shown on cards)</label>
+        <input type="text" name="category" value="<%= project ? project.category : '' %>" placeholder="Webflow — Motion">
+      </div>
+      <div class="field">
+        <label>Filter category (archive page chips — e.g. webflow, custom-js)</label>
+        <input type="text" name="filterCat" value="<%= project ? project.filterCat : '' %>" placeholder="webflow">
+      </div>
+    </div>
+
+    <div class="grid2">
+      <div class="field">
+        <label>Plate colors (used when there's no cover image)</label>
+        <div class="color-row">
+          <input type="color" name="color1" value="<%= project && project.color1 ? project.color1 : '#B9536E' %>">
+          <input type="color" name="color2" value="<%= project && project.color2 ? project.color2 : '#8F2F10' %>">
+        </div>
+      </div>
+      <div class="field">
+        <label>Monogram &amp; status (archive plate)</label>
+        <div class="color-row">
+          <input type="text" name="monogram" value="<%= project ? project.monogram : '' %>" placeholder="IK" style="width:70px;">
+          <input type="text" name="status" value="<%= project && project.status ? project.status : 'Live' %>" placeholder="Live" style="width:120px;">
+        </div>
+      </div>
+    </div>
+
+    <div class="field">
+      <label>Cover image</label>
+      <label class="file-btn">Upload image<input id="coverInput" type="file" name="coverImageFile" accept="image/*"></label>
+      <div class="hint">Saved as a real file under <code>/uploads</code> on the server. Leave empty to keep the current image (if any), or check "Remove" below to clear it and fall back to the plate colors.</div>
+      <div class="thumb-row" id="coverThumbRow">
+        <% if (project && project.coverImage) { %>
+        <div class="thumb"><img src="<%= project.coverImage %>"></div>
+        <% } %>
+      </div>
+      <% if (project && project.coverImage) { %>
+      <div class="checkbox-row" style="margin-top:8px;">
+        <input type="checkbox" name="removeCoverImage" value="1" id="removeCoverImage">
+        <label style="margin:0;" for="removeCoverImage">Remove current cover image</label>
+      </div>
+      <% } %>
+    </div>
+
+    <div class="grid2">
+      <div class="field">
+        <label>Client</label>
+        <input type="text" name="client" value="<%= project ? project.client : '' %>">
+      </div>
+      <div class="field">
+        <label>Year</label>
+        <input type="text" name="year" value="<%= project ? project.year : '' %>" placeholder="2026">
+      </div>
+    </div>
+
+    <div class="field">
+      <label>Tags (comma-separated — shown on cards AND on the case-study overview)</label>
+      <input type="text" name="tags" value="<%= project && project.tags ? project.tags.join(', ') : '' %>" placeholder="Webflow, GSAP, CMS">
+    </div>
+
+    <div class="field">
+      <label>Summary (one line, used on archive cards)</label>
+      <input type="text" name="summary" value="<%= project ? project.summary : '' %>">
+    </div>
+
+    <div class="field">
+      <label>Case study body (project page) — leave a blank line between paragraphs. **bold** and *em* both work.</label>
+      <textarea name="description" rows="6"><%= project ? project.description : '' %></textarea>
+    </div>
+
+    <div class="field">
+      <label>Live URL</label>
+      <input type="url" name="liveUrl" value="<%= project ? project.liveUrl : '' %>" placeholder="https://...">
+    </div>
+
+    <div class="field">
+      <label>Case-study page — advanced fields (JSON)</label>
+      <div class="hint">
+        Everything specific to the case-study template that doesn't fit a
+        simple text box: the hero eyebrow/title/sub, the button links, the
+        facts panel, gallery captions, and the "Key decisions" cards. Leave
+        any key out (or set it to <code>""</code> / <code>[]</code>) and
+        that part of the page just won't render.
+      </div>
+      <div style="margin:8px 0;"><button type="button" id="insertCaseExample">Insert example</button></div>
+      <textarea name="caseAdvanced" id="f_caseAdvanced" rows="14" spellcheck="false" placeholder='{"eyebrowTag":"","caseTitle":"","caseSub":"","links":[],"facts":[],"overviewEyebrow":"Overview","overviewHeading":"","galleryEyebrow":"Gallery — screens","galleryHeading":"","gallery":[],"decisionsEyebrow":"Key decisions","decisionsHeading":"","decisionsSub":"","decisions":[]}'><%= caseAdvancedJson %></textarea>
+    </div>
+
+    <div class="field checkbox-row">
+      <input type="checkbox" name="featured" <%= !project || project.featured !== false ? 'checked' : '' %>>
+      <label style="margin:0;">Show on the live site (uncheck to hide without deleting)</label>
+    </div>
+
+    <div class="form-actions">
+      <button type="submit" class="primary">Save project</button>
+      <a href="/admin" class="btn">Cancel</a>
+    </div>
+  </form>
+</div>
+
+<script>
+  // Auto-slug from title, but stop overwriting once the user edits slug directly.
+  var slugField = document.getElementById('f_slug');
+  var slugTouched = slugField.value.trim().length > 0;
+  document.getElementById('f_title').addEventListener('input', function(){
+    if (slugTouched) return;
+    slugField.value = this.value.toLowerCase()
+      .replace(/[+&]/g, ' ')
+      .replace(/[^a-z0-9]+/g, '-')
+      .replace(/^-+|-+$/g, '');
+  });
+  slugField.addEventListener('input', function(){ slugTouched = true; });
+
+  document.getElementById('insertCaseExample').addEventListener('click', function(){
+    var example = {
+      eyebrowTag: "Two sites · One system",
+      caseTitle: "Same bones, *two* different appetites.",
+      caseSub: "A short lede. **Bold the part that matters most.**",
+      links: [{ label: "Visit the live site", url: "https://example.com/" }],
+      facts: [
+        { label: "Client", value: "Acme Co." },
+        { label: "Role", value: "Design & Development" },
+        { label: "Status", value: "deployed" }
+      ],
+      overviewEyebrow: "Overview",
+      overviewHeading: "The brief, in *one* line.",
+      galleryEyebrow: "Gallery — screens",
+      galleryHeading: "A closer look.",
+      gallery: [
+        { src: "", brand: "", category: "Homepage", title: "What this screen shows" }
+      ],
+      decisionsEyebrow: "Key decisions",
+      decisionsHeading: "The choices that *held* it together.",
+      decisionsSub: "A one-line intro to the cards below.",
+      decisions: [
+        { title: "A decision that mattered", body: "Why it mattered, in a sentence or two." }
+      ]
+    };
+    document.getElementById('f_caseAdvanced').value = JSON.stringify(example, null, 2);
+  });
+
+  document.getElementById('coverInput').addEventListener('change', function(e){
+    var file = e.target.files[0];
+    var row = document.getElementById('coverThumbRow');
+    if (!file) return;
+    var reader = new FileReader();
+    reader.onload = function(){
+      row.innerHTML = '<div class="thumb"><img src="' + reader.result + '"></div>';
+    };
+    reader.readAsDataURL(file);
+  });
+</script>
+</body>
+</html>

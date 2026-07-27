@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Work CMS — Ay/DEV</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=IBM+Plex+Mono:wght@300;400;500;600&display=swap" rel="stylesheet">
+<%- include('_styles') %>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div>
+      <span class="eyebrow">Ay/DEV — internal tool</span>
+      <h1>Work CMS</h1>
+      <p class="sub">Add, edit, and reorder projects. Changes go live immediately —
+        there's no export/upload step anymore; every page reads this data directly.</p>
+    </div>
+    <form method="POST" action="/admin/logout"><button type="submit">Log out</button></form>
+  </header>
+
+  <% if (message) { %><div class="message"><%= message %></div><% } %>
+
+  <div class="toolbar">
+    <a href="/admin/new" class="btn primary">+ New project</a>
+    <a href="/" class="btn" target="_blank">View site ↗</a>
+  </div>
+
+  <div class="list">
+    <% if (!projects.length) { %>
+    <div class="empty">No projects yet. Click "+ New project" to add one.</div>
+    <% } %>
+    <% projects.forEach(function(p, i) { %>
+    <div class="card<%= p.featured === false ? ' hidden-item' : '' %>">
+      <span class="swatch" style="<% if (p.coverImage) { %>background-image:url('<%= p.coverImage %>')<% } else { %>background:linear-gradient(135deg,<%= p.color1 %>,<%= p.color2 %>)<% } %>"></span>
+      <span class="meta">
+        <span class="title"><%= p.title %></span><br>
+        <span class="cat"><%= p.category %><%= p.featured === false ? ' · hidden' : '' %> · /work/<%= p.slug %></span>
+      </span>
+      <span class="actions">
+        <form method="POST" action="/admin/move/<%= p.slug %>/up" style="display:inline;"><button <%= i === 0 ? 'disabled' : '' %>>↑</button></form>
+        <form method="POST" action="/admin/move/<%= p.slug %>/down" style="display:inline;"><button <%= i === projects.length - 1 ? 'disabled' : '' %>>↓</button></form>
+        <a class="btn" href="/admin/edit/<%= p.slug %>">Edit</a>
+        <form method="POST" action="/admin/delete/<%= p.slug %>" style="display:inline;" onsubmit="return confirm('Delete &quot;<%= p.title %>&quot;? This also removes its live page.');">
+          <button type="submit" class="danger">Delete</button>
+        </form>
+      </span>
+    </div>
+    <% }); %>
+  </div>
+</div>
+</body>
+</html>

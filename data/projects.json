@@ -1,0 +1,222 @@
+[
+  {
+    "slug": "kaidoverse",
+    "title": "Kaidoverse",
+    "category": "Webflow",
+    "filterCat": "Webflow",
+    "monogram": "K",
+    "status": "Live",
+    "color1": "#b9536e",
+    "color2": "#8f2f10",
+    "coverImage": "/uploads/fe1f1e637c3f07af.webp",
+    "year": "2024",
+    "client": "Kaido Cregger",
+    "tags": [
+      "Webflow",
+      "GSAP"
+    ],
+    "summary": "",
+    "description": "",
+    "liveUrl": "https://kaidoverse.com/",
+    "featured": true
+  },
+  {
+    "slug": "kilok9",
+    "title": "Kilo K9",
+    "category": "Webflow",
+    "filterCat": "Webflow",
+    "monogram": "K9",
+    "status": "Live",
+    "color1": "#47508b",
+    "color2": "#262b54",
+    "coverImage": "/uploads/978ef47162d28685.png",
+    "year": "2025",
+    "client": "Kilo k9",
+    "tags": [
+      "JavaScript",
+      "MapLibre GL JS",
+      "Geolocation"
+    ],
+    "summary": "Store locator built on MapLibre GL JS, matching real hours and routing customers to the nearest location that's actually open.",
+    "description": "",
+    "liveUrl": "",
+    "featured": true,
+    "overviewEyebrow": "Overview",
+    "galleryEyebrow": "Gallery — screens",
+    "decisionsEyebrow": "Key decisions"
+  },
+  {
+    "slug": "iki-ramen-sushi",
+    "title": "IKI Ramen+Sushi",
+    "category": "Webflow — Motion",
+    "filterCat": "webflow",
+    "monogram": "IK",
+    "status": "Live",
+    "color1": "#c4451b",
+    "color2": "#8f2f10",
+    "coverImage": "/uploads/764e681e2ed4e953.png",
+    "year": "2026",
+    "client": "IKI Hospitality",
+    "tags": [
+      "Webflow",
+      "Multi-brand system",
+      "CMS",
+      "OpenTable integration",
+      "Toast ordering"
+    ],
+    "summary": "Restaurant site built in Webflow, with scroll-triggered motion used to pace the menu sections instead of dumping the whole card on load.",
+    "description": "Jeffry Undiarto is a Master Sommelier who spent over a decade in fine dining, including a run at the two-Michelin-starred n/naka, before building IKI Hospitality around a few distinct Japanese concepts. **IKI Ramen+Sushi — ramen, sushi, and omakase across Hollywood and Koreatown — and AKAMI, a sushi-and-omakase-only concept in Toluca Lake and Arcadia, needed sites that felt like family without feeling identical.**\n\nThe answer was one shared component system — hero video module, omakase menu cards, per-location reservation blocks, gallery grid, chef bio section — built once and tuned per brand. The copy, imagery, and omakase structure change from site to site; the underlying system doesn't, which is what makes adding a third or fourth location mostly a content job, not a rebuild.",
+    "liveUrl": "https://ikiramen.com/",
+    "featured": true,
+    "eyebrowTag": "Two sites · One system",
+    "caseTitle": "Same bones, *two* different appetites.",
+    "caseSub": "IKI Hospitality runs a handful of modern Japanese concepts across LA under chef Jeffry Undiarto. **IKI Ramen+Sushi and AKAMI needed sites that read as siblings, not clones — the same underlying component system, tuned differently for a ramen-and-sushi flagship versus an omakase-only sushi bar.** Four locations, two brands, one build.",
+    "links": [
+      {
+        "label": "Visit IKI Ramen+Sushi",
+        "url": "https://ikiramen.com/"
+      },
+      {
+        "label": "Visit AKAMI",
+        "url": "https://akami-sushi.com/"
+      }
+    ],
+    "facts": [
+      {
+        "label": "Client",
+        "value": "IKI Hospitality"
+      },
+      {
+        "label": "Role",
+        "value": "Design & Development"
+      },
+      {
+        "label": "Sites",
+        "value": "IKI + AKAMI"
+      },
+      {
+        "label": "Locations",
+        "value": "4 across LA"
+      },
+      {
+        "label": "Status",
+        "value": "deployed"
+      }
+    ],
+    "overviewEyebrow": "Overview",
+    "overviewHeading": "Two concepts, *one* brief.",
+    "galleryEyebrow": "Gallery — screens",
+    "galleryHeading": "Two rooms, *same* architecture.",
+    "gallery": [
+      {
+        "src": "",
+        "brand": "IKI Ramen+Sushi",
+        "category": "Homepage",
+        "title": "Hero video + omakase highlights"
+      },
+      {
+        "src": "",
+        "brand": "IKI Ramen+Sushi",
+        "category": "Omakase menu",
+        "title": "Seven-course tasting, laid out course by course"
+      },
+      {
+        "src": "",
+        "brand": "AKAMI",
+        "category": "Homepage",
+        "title": "Two omakase tiers — Lunch & the full Experience",
+        "color1": "#2B3A4A",
+        "color2": "#16202A"
+      },
+      {
+        "src": "",
+        "brand": "AKAMI",
+        "category": "Locations",
+        "title": "Toluca Lake & Arcadia, one reservation component",
+        "color1": "#2B3A4A",
+        "color2": "#16202A"
+      }
+    ],
+    "decisionsEyebrow": "Key decisions",
+    "decisionsHeading": "The choices that *held* it together.",
+    "decisionsSub": "Four calls that shaped the build more than any single line of code.",
+    "decisions": [
+      {
+        "title": "One system, not two designs",
+        "body": "IKI and AKAMI could have been two unrelated builds. Instead the hero, omakase cards, reservation blocks, and gallery grid all come from one shared component set — so the two sites feel related without feeling identical."
+      },
+      {
+        "title": "Content model over hard-coding",
+        "body": "IKI runs one connected omakase tasting; AKAMI runs two separate tiers. Rather than fork the template, the CMS structure was built loose enough to hold both shapes from day one."
+      },
+      {
+        "title": "Reservations as a plug-in",
+        "body": "Four locations, four OpenTable experiences. One reservation component takes a location ID and does the rest — adding a fifth location is a data entry, not a design decision."
+      },
+      {
+        "title": "Consistency where it's invisible",
+        "body": "Online ordering, hours, and location details live in the exact same place across both sites. Guests never notice this — which is the point."
+      }
+    ]
+  },
+  {
+    "slug": "quick-greens",
+    "title": "Quick Greens",
+    "category": "Webflow",
+    "filterCat": "webflow",
+    "monogram": "QG",
+    "status": "Live",
+    "color1": "#2c6a68",
+    "color2": "#173e3c",
+    "coverImage": "/uploads/b2a8be885e00aa32.png",
+    "year": "2025",
+    "client": "Quick Greens",
+    "tags": [
+      "Webflow",
+      "Forms",
+      "Integrations"
+    ],
+    "summary": "Fast-casual salad chain site with custom order and catering forms wired into their own systems, not a generic third-party embed.",
+    "description": "",
+    "liveUrl": "https://www.quickgreens.com/",
+    "featured": true,
+    "overviewEyebrow": "Overview",
+    "galleryEyebrow": "Gallery — screens",
+    "decisionsEyebrow": "Key decisions"
+  },
+  {
+    "slug": "stache-haus",
+    "title": "Stache.haus",
+    "category": "Custom JS — Scroll",
+    "filterCat": "custom-js",
+    "monogram": "SH",
+    "status": "Live",
+    "color1": "#C79A3B",
+    "color2": "#8A631C",
+    "coverImage": "",
+    "summary": "Hand-coded scroll experience built without a page builder, so the motion timing could be tuned exactly rather than fighting a template's defaults.",
+    "tags": [
+      "JavaScript",
+      "GSAP",
+      "Scroll motion"
+    ],
+    "year": "",
+    "client": "Stache.haus",
+    "liveUrl": "",
+    "gallery": [],
+    "description": "",
+    "featured": true,
+    "eyebrowTag": "",
+    "caseTitle": "",
+    "caseSub": "",
+    "links": [],
+    "facts": [],
+    "overviewEyebrow": "Overview",
+    "overviewHeading": "",
+    "galleryEyebrow": "Gallery — screens",
+    "decisionsEyebrow": "Key decisions",
+    "decisionsHeading": "",
+    "decisionsSub": "",
+    "decisions": []
+  }
+]

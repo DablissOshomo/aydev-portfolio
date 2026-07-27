@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Log in — Ay/DEV CMS</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=IBM+Plex+Mono:wght@300;400;500;600&display=swap" rel="stylesheet">
+<%- include('_styles') %>
+</head>
+<body>
+  <div class="login-card">
+    <span class="eyebrow">Ay/DEV</span>
+    <h1>Work CMS</h1>
+    <% if (error) { %><div class="error"><%= error %></div><% } %>
+    <form method="POST" action="/admin/login">
+      <div class="field">
+        <label>Password</label>
+        <input type="password" name="password" autofocus required>
+      </div>
+      <button type="submit" class="primary" style="width:100%;justify-content:center;">Log in</button>
+    </form>
+  </div>
+</body>
+</html>

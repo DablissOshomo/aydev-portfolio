@@ -1,0 +1,19 @@
+{
+  "name": "aydev-cms",
+  "version": "1.0.0",
+  "description": "Ay/DEV portfolio site + work CMS",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^17.4.2",
+    "ejs": "^6.0.1",
+    "express": "^5.2.1",
+    "express-session": "^1.19.0",
+    "multer": "^2.2.0"
+  }
+}
